@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Equipements{% endblock title %}
+
+{% block content %}
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+
+	<!-- START ROW -->
+
+	<div class="row">
+
+		<!-- NEW COL START -->
+		<article class="col-sm-12 col-md-12 col-lg-12">
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget" id="wid-id-6" data-widget-editbutton="false" data-widget-custombutton="false">
+				<!-- widget options:
+					usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+					data-widget-colorbutton="false"
+					data-widget-editbutton="false"
+					data-widget-togglebutton="false"
+					data-widget-deletebutton="false"
+					data-widget-fullscreenbutton="false"
+					data-widget-custombutton="false"
+					data-widget-collapsed="true"
+					data-widget-sortable="false"
+
+				-->
+				<header>
+					<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+					<h2>Affecter un article :
+						{% for mater in mat %}
+	<strong>{{ mater.Type_Article_FK }}</strong>  model : <strong>{{ mater.Model_Article_FK}}</strong>
+
+</h2>
+
+				</header>
+
+				<!-- widget div-->
+				<div>
+
+					<!-- widget edit box -->
+					<div class="jarviswidget-editbox">
+						<!-- This area used as dropdown edit box -->
+
+					</div>
+					<!-- end widget edit box -->
+
+					<!-- widget content -->
+					<div class="widget-body no-padding">
+
+						<form class='smart-form' action='/distributionForm/{{ mater.id }}/' method='POST'>
+									{% endfor %}
+							{% csrf_token %}
+							<fieldset>
+								<div class="row">
+									<section class="col col-2">
+										<label class="label">Numero C12</label>
+										<label class="input">
+											{{form.num_c12}}
+										</label>
+									</section>
+									<section class="col col-3">
+										<label class="label">Date C12</label>
+										<label class="input"> <i class="icon-append fa fa-calendar"></i>
+											{{form.date_C12}}
+										</label>
+									</section>
+									<section class="col col-2">
+										<label class="label">Quantite</label>
+										<label class="input">
+											{{form.quantite}}
+										</label>
+									</section>
+									<section class="col col-3">
+										<label class="label">Service</label>
+										<label class="input-lg">
+											{{form.service}}
+										</label>
+									</section>
+								</div>
+							</fieldset>
+
+							<footer>
+								<button type="submit" name="submit" class="btn btn-primary">
+									Affecter
+								</button>
+							</footer>
+
+						</form>
+
+					</div>
+					<!-- end widget content -->
+
+				</div>
+				<!-- end widget div -->
+
+			</div>
+			<!-- end widget -->
+		</article>
+		<!-- END COL -->
+
+	</div>
+
+	<!-- END ROW -->
+
+</section>
+<!-- end widget grid -->
+{% endblock content %}

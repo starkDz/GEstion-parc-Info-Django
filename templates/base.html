@@ -1,0 +1,681 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<title> Equipement </title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- #CSS Links -->
+		<!-- Basic Styles -->
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/bootstrap.min.css' %}">
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/font-awesome.min.css' %}">
+
+		<!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/smartadmin-production.min.cs' %}s">
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/smartadmin-skins.min.css' %}">
+
+		<!-- SmartAdmin RTL Support is under construction
+			 This RTL CSS will be released in version 1.5
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.min.css"> -->
+
+		<!-- We recommend you use "your_style.css" to override SmartAdmin
+		     specific styles this will also ensure you retrain your customization with each SmartAdmin update.
+		<link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
+
+		<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+		<link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/demo.min.css' %}">
+
+		<!-- #FAVICONS -->
+		<link rel="shortcut icon" href="{% static 'img/infos1.png' %}" type="image/x-icon">
+		<link rel="icon" href="{% static 'img/infos1.png' %}" type="image/x-icon">
+
+
+		<!-- #APP SCREEN / ICONS -->
+		<!-- Specifying a Webpage Icon for Web Clip
+			 Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+		<link rel="apple-touch-icon" href="{% static 'img/splash/sptouch-icon-iphone.png' %}">
+		<link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/splash/touch-icon-ipad.png' %}">
+		<link rel="apple-touch-icon" sizes="120x120" href="{% static 'img/splash/touch-icon-iphone-retina.png' %}">
+		<link rel="apple-touch-icon" sizes="152x152" href="{% static 'img/splash/touch-icon-ipad-retina.png' %}">
+
+		<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!-- Startup image for web apps -->
+		<link rel="apple-touch-startup-image" href="{% static 'img/splash/ipad-landscape.png' %}" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+		<link rel="apple-touch-startup-image" href="{% static 'img/splash/ipad-portrait.png' %}" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+		<link rel="apple-touch-startup-image" href="{% static 'img/splash/iphone.png' %}" media="screen and (max-device-width: 320px)">
+
+	</head>
+
+	<!--
+
+	TABLE OF CONTENTS.
+
+	Use search to find needed section.
+
+	===================================================================
+
+	|  01. #CSS Links                |  all CSS links and file paths  |
+	|  02. #FAVICONS                 |  Favicon links and file paths  |
+	|  03. #GOOGLE FONT              |  Google font link              |
+	|  04. #APP SCREEN / ICONS       |  app icons, screen backdrops   |
+	|  05. #BODY                     |  body tag                      |
+	|  06. #HEADER                   |  header tag                    |
+	|  07. #PROJECTS                 |  project lists                 |
+	|  08. #TOGGLE LAYOUT BUTTONS    |  layout buttons and actions    |
+	|  09. #MOBILE                   |  mobile view dropdown          |
+	|  10. #SEARCH                   |  search field                  |
+	|  11. #NAVIGATION               |  left panel & navigation       |
+	|  12. #MAIN PANEL               |  main panel                    |
+	|  13. #MAIN CONTENT             |  content holder                |
+	|  14. #PAGE FOOTER              |  page footer                   |
+	|  15. #SHORTCUT AREA            |  dropdown shortcuts area       |
+	|  16. #PLUGINS                  |  all scripts and plugins       |
+
+	===================================================================
+
+	-->
+
+	<!-- #BODY -->
+	<!-- Possible Classes
+
+		* 'smart-skin-{SKIN#}'
+		* 'smart-rtl'         - Switch theme mode to RTL (will be avilable from version SmartAdmin 1.5)
+		* 'menu-on-top'       - Switch to top navigation (no DOM change required)
+		* 'hidden-menu'       - Hides the main menu but still accessable by hovering over left edge
+		* 'fixed-header'      - Fixes the header
+		* 'fixed-navigation'  - Fixes the main menu
+		* 'fixed-ribbon'      - Fixes breadcrumb
+		* 'fixed-footer'      - Fixes footer
+		* 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
+	-->
+	<body class="desktop-detected pace-done ">
+
+		<!-- #HEADER -->
+		<header id="header">
+			<div id="logo-group">
+				<span id="logo"></span>
+				<!-- PLACE YOUR LOGO HERE -->
+
+				<!-- END LOGO PLACEHOLDER -->
+
+		 		<!-- Note: The activity badge color changes when clicked and resets the number to 0
+					 Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
+				<span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>
+
+				<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
+				<div class="ajax-dropdown">
+
+					<!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
+					<div class="btn-group btn-group-justified" data-toggle="buttons">
+						<label class="btn btn-default">
+							<input type="radio" name="activity" id="ajax/notify/mail.html">
+							Msgs (14) </label>
+						<label class="btn btn-default">
+							<input type="radio" name="activity" id="ajax/notify/notifications.html">
+							notify (3) </label>
+						<label class="btn btn-default">
+							<input type="radio" name="activity" id="ajax/notify/tasks.html">
+							Tasks (4) </label>
+					</div>
+
+					<!-- notification content -->
+					<div class="ajax-notifications custom-scroll">
+
+						<div class="alert alert-transparent">
+							<h4>Click a button to show messages here</h4>
+							This blank page message helps protect your privacy, or you can show the first message here automatically.
+						</div>
+
+						<i class="fa fa-lock fa-4x fa-border"></i>
+
+					</div>
+					<!-- end notification content -->
+
+					<!-- footer: refresh area -->
+					<span> Last updated on: 12/12/2013 9:43AM
+						<button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
+							<i class="fa fa-refresh"></i>
+						</button> </span>
+					<!-- end footer -->
+
+				</div>
+				<!-- END AJAX-DROPDOWN -->
+			</div>
+
+			<!-- #PROJECTS: projects dropdown -->
+			<div class="project-context hidden-xs">
+
+
+
+			</div>
+			<!-- end projects dropdown -->
+
+			<!-- #TOGGLE LAYOUT BUTTONS -->
+			<!-- pulled right: nav area -->
+			<div class="pull-right">
+
+				<!-- collapse menu button -->
+				<div id="hide-menu" class="btn-header pull-right">
+					<span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+				</div>
+				<!-- end collapse menu -->
+
+
+
+				<!-- logout button -->
+				<div id="logout" class="btn-header transparent pull-right">
+					<span> <a href="login.html" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a> </span>
+				</div>
+				<!-- end logout button -->
+
+				<!-- search mobile button (this is hidden till mobile view port) -->
+				<div id="search-mobile" class="btn-header transparent pull-right">
+					<span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
+				</div>
+				<!-- end search mobile button -->
+
+				<!-- #SEARCH -->
+				<!-- input: search field -->
+				<form action="search.html" class="header-search pull-right">
+					<input id="search-fld" type="text" name="param" placeholder="Find reports and more">
+					<button type="submit">
+						<i class="fa fa-search"></i>
+					</button>
+					<a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
+				</form>
+				<!-- end input: search field -->
+
+				<!-- fullscreen button -->
+				<div id="fullscreen" class="btn-header transparent pull-right">
+					<span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
+				</div>
+				<!-- end fullscreen button -->
+
+				<!-- #Voice Command: Start Speech -->
+				<div id="speech-btn" class="btn-header transparent pull-right hidden-sm hidden-xs">
+					<div>
+						<a href="javascript:void(0)" title="Voice Command" data-action="voiceCommand"><i class="fa fa-microphone"></i></a>
+						<div class="popover bottom"><div class="arrow"></div>
+							<div class="popover-content">
+								<h4 class="vc-title">Voice command activated <br><small>Please speak clearly into the mic</small></h4>
+								<h4 class="vc-title-error text-center">
+									<i class="fa fa-microphone-slash"></i> Voice command failed
+									<br><small class="txt-color-red">Must <strong>"Allow"</strong> Microphone</small>
+									<br><small class="txt-color-red">Must have <strong>Internet Connection</strong></small>
+								</h4>
+								<a href="javascript:void(0);" class="btn btn-success" onclick="commands.help()">See Commands</a>
+								<a href="javascript:void(0);" class="btn bg-color-purple txt-color-white" onclick="$('#speech-btn .popover').fadeOut(50);">Close Popup</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end voice command -->
+
+				<!-- multiple lang dropdown : find all flags in the flags page -->
+
+				<!-- end multiple lang -->
+
+			</div>
+			<!-- end pulled right: nav area -->
+
+		</header>
+		<!-- END HEADER -->
+
+		<!-- #NAVIGATION -->
+		<!-- Left panel : Navigation area -->
+		<!-- Note: This width of the aside area can be adjusted through LESS variables -->
+		<aside id="left-panel">
+
+			<!-- User info -->
+			<div class="login-info">
+				<span> <!-- User image size is adjusted inside CSS, it should stay as it -->
+
+					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
+						<img src="{% static 'img/infos1.png' %}" alt="me" class="online" />
+						<span>
+							Utilisateur
+						</span>
+						<i class="fa fa-angle-down"></i>
+					</a>
+
+				</span>
+			</div>
+			<!-- end user info -->
+
+			<!-- NAVIGATION : This navigation is also responsive
+
+			To make this navigation dynamic please make sure to link the node
+			(the reference to the nav > ul) after page load. Or the navigation
+			will not initialize.
+			-->
+			<nav>
+				<!-- NOTE: Notice the gaps after each icon usage <i></i>..
+				Please note that these links work a bit different than
+				traditional href="" links. See documentation for details.
+				-->
+
+				<ul>
+					<li>
+						<a href="{{ HTTP_HOST }}/" title="Acceuil"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Acceuil</span></a>
+					</li>
+					<li>
+						<a href="{{ HTTP_HOST }}/admin"><i class="fa fa-lg fa-fw  fa-user"></i> <span class="menu-item-parent">Administrateur</span></a>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-lg fa-fw  fa-desktop"></i> <span class="menu-item-parent">Equipements</span></a>
+						<ul>
+							<li>
+								<a href="{{ HTTP_HOST }}/admin/Equipement/materiel/add/"><i class="fa fa-fw fa-plus-square txt-color-blue hidden-md hidden-sm hidden-xs"></i> Ajouter Equipement
+								</a>
+							</li>
+							<li>
+								<a href="{{ HTTP_HOST }}/equipement/Stock"> <i class="fa fa-fw fa-archive txt-color-blue hidden-md hidden-sm hidden-xs"></i> Notre Magasin
+								</a>
+							</li>
+							<li>
+								<a href="{{ HTTP_HOST }}/equipement/OutStock"><i class="fa fa-fw fa-paper-plane txt-color-blue hidden-md hidden-sm hidden-xs"></i> Equipements Distribués
+								</a>
+							</li>
+									<li >
+										<a href="#">Liste Equipements</a>
+										<ul>
+											<li>
+												<a href="{{ HTTP_HOST }}/equipement/toutes_les_equipements">Toutes les equipements
+												</a>
+											</li>
+											{% for type_materiel in type_de_materiel %}
+											<li>
+												<a href="{{ HTTP_HOST }}/equipement/{{type_materiel.id}}">{{type_materiel.Designation_Type}}
+												</a>
+											</li>
+											{% endfor %}
+
+										</ul>
+									</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-lg fa-fw  fa-sitemap"></i> <span class="menu-item-parent">Réseaux</span></a>
+						<ul>
+							<li>
+								<a href="{{ HTTP_HOST }}/admin/Reseaux/equipement/add/"><i class="fa fa-fw fa-plus-square txt-color-blue hidden-md hidden-sm hidden-xs"></i> Ajouter Equipement
+								</a>
+							</li>
+									<li >
+										<a href="#">Liste Equipements</a>
+										<ul>
+											<li>
+												<a href="{{ HTTP_HOST }}/Reseaux/toutes_les_equipements">Liste equipements
+												</a>
+											</li>
+											{% for type_materiel in type_de_materiel_reseaux %}
+											<li>
+												<a href="{{ HTTP_HOST }}/Reseaux/{{type_materiel.id}}">{{type_materiel.description}}
+												</a>
+											</li>
+											{% endfor %}
+
+										</ul>
+									</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-lg fa-fw fa-tasks"></i> <span class="menu-item-parent">Consommable</span></a>
+						<ul>
+							<li>
+								<a href="{{ HTTP_HOST }}/admin/Magasin/article/add/"><i class="fa fa-fw fa-plus-square txt-color-blue hidden-md hidden-sm hidden-xs"></i> Ajouter un Article
+								</a>
+							</li>
+							<li>
+								<a href="{{ HTTP_HOST }}/Magasin/Stock"> <i class="fa fa-fw fa-archive txt-color-blue hidden-md hidden-sm hidden-xs"></i> Notre Magasin
+								</a>
+							</li>
+							<li>
+								<a href="{{ HTTP_HOST }}/Magasin/OutStock"><i class="fa fa-fw fa-paper-plane txt-color-blue hidden-md hidden-sm hidden-xs"></i> Articles Distribués
+								</a>
+							</li>
+									<li >
+										<a href="#">Liste des Articles</a>
+										<ul>
+											<li>
+												<a href="{{ HTTP_HOST }}/Magasin/toutes_les_articles">Liste equipements
+												</a>
+											</li>
+											{% for type_Article in type_de_consommable %}
+											<li>
+												<a href="{{ HTTP_HOST }}/Magasin/{{type_Article.id}}">{{type_Article.Designation_Type}}
+												</a>
+											</li>
+											{% endfor %}
+
+										</ul>
+									</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-lg fa-fw fa-print"></i> <span class="menu-item-parent">Imprimer Par Service</span></a>
+						<ul>
+							{% for Service in Services %}
+									<li>
+										<a href="{{ HTTP_HOST }}/equipement/printPerService/{{Service.id}}">{{Service.Nom_Service}}
+										</a>
+									</li>
+							{% endfor %}
+						</ul>
+					</li>
+
+				</ul>
+			</nav>
+			<span class="minifyme" data-action="minifyMenu">
+				<i class="fa fa-arrow-circle-left hit"></i>
+			</span>
+
+		</aside>
+		<!-- END NAVIGATION -->
+
+		<!-- MAIN PANEL -->
+		<div id="main" role="main">
+
+			<!-- RIBBON -->
+			<div id="ribbon">
+
+				<span class="ribbon-button-alignment">
+					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+						<i class="fa fa-refresh"></i>
+					</span>
+				</span>
+
+				<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:
+
+				<span class="ribbon-button-alignment pull-right">
+				<span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+				<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+				</span> -->
+
+			</div>
+			<!-- END RIBBON -->
+
+
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+
+	<Button onclick="Send()">Test</Button>
+
+				{% block content %}
+				<div align="center" Valign="center">
+					<br><br>
+					<br><br>
+					<img src=" {% static 'img/infos2.png' %}"  width="65%" style="opacity: 0.5;"/>
+				</div>
+				{% endblock content %}
+
+
+			</div>
+			<!-- END MAIN CONTENT -->
+
+		</div>
+		<!-- END MAIN PANEL -->
+
+
+		<!--================================================== -->
+
+		<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+		<script data-pace-options='{ "restartOnRequestAfter": true }' src="{% static 'js/plugin/pace/pace.min.js' %}"></script>
+		<script src="{% static 'js/libs/jquery-2.0.2.min.js' %}"></script>
+
+		<script src="{% static 'js/libs/jquery-ui-1.10.3.min.js' %}"></script>
+
+		<!-- IMPORTANT: APP CONFIG -->
+		<script src="{% static 'js/app.config.js' %}"></script>
+
+		<!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
+		<script src="{% static 'js/plugin/jquery-touch/jquery.ui.touch-punch.min.js' %}"></script>
+
+		<!-- BOOTSTRAP JS -->
+		<script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+
+		<!-- CUSTOM NOTIFICATION -->
+		<script src="{% static 'js/notification/SmartNotification.min.js' %}"></script>
+
+		<!-- JARVIS WIDGETS -->
+		<script src="{% static 'js/smartwidgets/jarvis.widget.min.js' %}"></script>
+
+		<!-- EASY PIE CHARTS -->
+		<script src="{% static 'js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js' %}"></script>
+
+		<!-- SPARKLINES -->
+		<script src="{% static 'js/plugin/sparkline/jquery.sparkline.min.js' %}"></script>
+
+		<!-- JQUERY VALIDATE -->
+		<script src="{% static 'js/plugin/jquery-validate/jquery.validate.min.js' %}"></script>
+
+		<!-- JQUERY MASKED INPUT -->
+		<script src="{% static 'js/plugin/masked-input/jquery.maskedinput.min.js' %}"></script>
+
+		<!-- JQUERY SELECT2 INPUT -->
+		<script src="{% static 'js/plugin/select2/select2.min.js' %}"></script>
+
+		<!-- JQUERY UI + Bootstrap Slider -->
+		<script src="{% static 'js/plugin/bootstrap-slider/bootstrap-slider.min.js' %}"></script>
+
+		<!-- browser msie issue fix -->
+		<script src="{% static 'js/plugin/msie-fix/jquery.mb.browser.min.js' %}"></script>
+
+		<!-- FastClick: For mobile devices -->
+		<script src="{% static 'js/plugin/fastclick/fastclick.min.js' %}"></script>
+
+		<!--[if IE 8]>
+
+		<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+
+		<![endif]-->
+
+		<!-- Demo purpose only -->
+		<script src="{% static 'js/demo.min.js' %}"></script>
+
+		<!-- MAIN APP JS FILE -->
+		<script src="{% static 'js/app.min.js' %}"></script>
+
+		<!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
+		<!-- Voice command : plugin -->
+		<script src="{% static 'js/speech/voicecommand.min.js' %}"></script>
+
+		<!-- PAGE RELATED PLUGIN(S)
+		<script src="..."></script>-->
+		<script src="{% static 'js/plugin/datatables/jquery.dataTables.min.js' %}"></script>
+		<script src="{% static 'js/plugin/datatables/dataTables.colVis.min.js' %}"></script>
+		<script src="{% static 'js/plugin/datatables/dataTables.tableTools.min.js' %}"></script>
+		<script src="{% static 'js/plugin/datatables/dataTables.bootstrap.min.js' %}"></script>
+		<script src="{% static 'js/plugin/datatable-responsive/datatables.responsive.min.js' %}"></script>
+
+		<script type="text/javascript">
+
+		// DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+
+		$(document).ready(function() {
+
+			pageSetUp();
+			/* // DOM Position key index //
+
+			l - Length changing (dropdown)
+			f - Filtering input (search)
+			t - The Table! (datatable)
+			i - Information (records)
+			p - Pagination (paging)
+			r - pRocessing
+			< and > - div elements
+			<"#id" and > - div with an id
+			<"class" and > - div with a class
+			<"#id.class" and > - div with an id and class
+
+			Also see: http://legacy.datatables.net/usage/features
+			*/
+
+			/* BASIC ;*/
+				var responsiveHelper_dt_basic = undefined;
+				var responsiveHelper_datatable_fixed_column = undefined;
+				var responsiveHelper_datatable_col_reorder = undefined;
+				var responsiveHelper_datatable_tabletools = undefined;
+
+				var breakpointDefinition = {
+					tablet : 1024,
+					phone : 480
+				};
+
+				$('#dt_basic').dataTable({
+					"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>"+
+						"t"+
+						"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+					"autoWidth" : true,
+					"preDrawCallback" : function() {
+						// Initialize the responsive datatables helper once.
+						if (!responsiveHelper_dt_basic) {
+							responsiveHelper_dt_basic = new ResponsiveDatatablesHelper($('#dt_basic'), breakpointDefinition);
+						}
+					},
+					"rowCallback" : function(nRow) {
+						responsiveHelper_dt_basic.createExpandIcon(nRow);
+					},
+					"drawCallback" : function(oSettings) {
+						responsiveHelper_dt_basic.respond();
+					}
+				});
+
+			/* END BASIC */
+
+			/* COLUMN FILTER  */
+		    var otable = $('#datatable_fixed_column').DataTable({
+		    	//"bFilter": false,
+		    	//"bInfo": false,
+		    	//"bLengthChange": false
+		    	//"bAutoWidth": false,
+		    	"bPaginate": true,
+		    	//"bStateSave": true // saves sort state using localStorage
+				"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6 hidden-xs'f><'col-sm-6 col-xs-12 hidden-xs'<'toolbar'>>r>"+
+						"t"+
+						"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+				"autoWidth" : true,
+				"preDrawCallback" : function() {
+					// Initialize the responsive datatables helper once.
+					if (!responsiveHelper_datatable_fixed_column) {
+						responsiveHelper_datatable_fixed_column = new ResponsiveDatatablesHelper($('#datatable_fixed_column'), breakpointDefinition);
+					}
+				},
+				"rowCallback" : function(nRow) {
+					responsiveHelper_datatable_fixed_column.createExpandIcon(nRow);
+				},
+				"drawCallback" : function(oSettings) {
+					responsiveHelper_datatable_fixed_column.respond();
+				}
+
+		    });
+
+		    // Apply the filter
+		    $("#datatable_fixed_column thead th input[type=text]").on( 'keyup change', function () {
+
+		        otable
+		            .column( $(this).parent().index()+':visible' )
+		            .search( this.value )
+		            .draw();
+
+		    } );
+		    /* END COLUMN FILTER */
+
+			/* COLUMN SHOW - HIDE */
+			$('#datatable_col_reorder').dataTable({
+				"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-6 hidden-xs'C>r>"+
+						"t"+
+						"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-sm-6 col-xs-12'p>>",
+				"autoWidth" : true,
+				"preDrawCallback" : function() {
+					// Initialize the responsive datatables helper once.
+					if (!responsiveHelper_datatable_col_reorder) {
+						responsiveHelper_datatable_col_reorder = new ResponsiveDatatablesHelper($('#datatable_col_reorder'), breakpointDefinition);
+					}
+				},
+				"rowCallback" : function(nRow) {
+					responsiveHelper_datatable_col_reorder.createExpandIcon(nRow);
+				},
+				"drawCallback" : function(oSettings) {
+					responsiveHelper_datatable_col_reorder.respond();
+				}
+			});
+
+			/* END COLUMN SHOW - HIDE */
+
+			/* TABLETOOLS */
+			$('#datatable_tabletools').dataTable({
+
+				// Tabletools options:
+				//   https://datatables.net/extensions/tabletools/button_options
+				"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-6 hidden-xs'T>r>"+
+						"t"+
+						"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-sm-6 col-xs-12'p>>",
+		        "oTableTools": {
+		        	 "aButtons": [
+
+		             ],
+		            "sSwfPath": "js/plugin/datatables/swf/copy_csv_xls_pdf.swf"
+		        },
+				"autoWidth" : true,
+				"preDrawCallback" : function() {
+					// Initialize the responsive datatables helper once.
+					if (!responsiveHelper_datatable_tabletools) {
+						responsiveHelper_datatable_tabletools = new ResponsiveDatatablesHelper($('#datatable_tabletools'), breakpointDefinition);
+					}
+				},
+				"rowCallback" : function(nRow) {
+					responsiveHelper_datatable_tabletools.createExpandIcon(nRow);
+				},
+				"drawCallback" : function(oSettings) {
+					responsiveHelper_datatable_tabletools.respond();
+				}
+			});
+
+			/* END TABLETOOLS */
+
+		})
+		// START AND FINISH DATE
+
+		</script>
+		<script>
+			function Send(){
+				alert("hello");
+				$.ajax({
+		           type: "POST",
+		           url: "/Etats",
+		           dataType: "json",
+		           success: function (msg) {
+		               if (msg) {
+		                   alert("Somebody" + name + " was added in list !");
+		                   location.reload(true);
+		               } else {
+		                   alert("Cannot add to list !");
+		               }
+		           },
+
+		           data: { "designationFr": "En Utilisation", "designationAr": ""  }
+		       });
+			}
+		</script>
+
+
+
+
+	</body>
+
+</html>

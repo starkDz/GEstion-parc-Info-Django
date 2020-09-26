@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block title %}Equipements{% endblock title %}
+
+{% block content %}
+
+
+
+
+
+
+
+
+
+
+
+<!--
+					The ID "widget-grid" will start to initialize all widgets below
+					You do not need to use widgets if you dont want to. Simply remove
+					the <section></section> and you can use wells or panels instead
+					-->
+
+				<!-- widget grid -->
+				<section id="widget-grid" class="">
+
+
+
+
+						<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+
+						<div class="jarviswidget jarviswidget-color-blueDark jarviswidget-sortable" id="wid-id-2" data-widget-editbutton="false" role="widget">
+								<!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
+
+								-->
+								<header><span class="widget-icon"> <i class="fa fa-fw fa-desktop"></i> </span>
+									<h2>Liste des Equipements </h2>
+								</header>
+
+								<!-- widget div-->
+								<div >
+
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+
+									</div>
+									<!-- end widget edit box -->
+
+									<!-- widget content -->
+									<div class="widget-body no-padding">
+
+										<table id="datatable_fixed_column" class="table table-striped table-bordered dataTable no-footer" width="100%" >
+
+											<thead>
+												<tr role="row">
+													<th class="hasinput"  rowspan="1" colspan="1">
+														<input type="text" class="form-control" placeholder="Filter ">
+													</th>
+													<th class="hasinput" rowspan="1" colspan="1">
+														<input type="text" class="form-control" placeholder="Filter ">
+													</th>
+													<th class="hasinput"  rowspan="1" colspan="1">
+														<input type="text" class="form-control" placeholder="Filter ">
+													</th>
+													<th class="hasinput"  rowspan="1" colspan="1">
+														<input type="text" class="form-control" placeholder="Filter ">
+													</th>
+													<th class="hasinput"  rowspan="1" colspan="1">
+														<input type="text" class="form-control" placeholder="Filter ">
+													</th>
+													<th class="hasinput"  rowspan="1" colspan="1">
+															<input type="text" class="form-control" placeholder="Filter ">
+													</th>
+													<th class="hasinput"  rowspan="1" colspan="1">
+														<input type="text" class="form-control" placeholder="Filter ">
+													</th>
+													<th class="hasinput"  rowspan="1" colspan="1">
+														<input type="text" class="form-control" placeholder="Filter ">
+													</th>
+													<th class="hasinput"  rowspan="1" colspan="1">
+															<input type="text" class="form-control" placeholder="Filter ">
+													</th>
+													<th class="hasinput"  rowspan="1" colspan="1">
+														<input type="text" class="form-control" placeholder="Filter ">
+													</th>
+													<th class="hasinput"  rowspan="1" colspan="1">
+														<input type="text" class="form-control" placeholder="Filter ">
+													</th>
+													<th class="hasinput"  rowspan="1" colspan="1">
+															<input type="text" class="form-control" placeholder="Filter ">
+													</th>
+													<th class="hasinput"  rowspan="1" colspan="1">
+														<input type="text" class="form-control" placeholder="Filter ">
+													</th>
+													<th class="hasinput"  rowspan="1" colspan="1">
+														<input type="text" class="form-control" placeholder="Filter ">
+													</th>
+													<th class="hasinput"  rowspan="1" colspan="1">
+														<input type="text" class="form-control" placeholder="Filter ">
+													</th>
+													<th></th>
+													<th></th>
+													<th></th>
+
+												</tr>
+												<tr>
+													<th data-class="expand"style="width:6%" >Equipement</th>
+													<th data-hide="phone" style="width:6%">Marque</th>
+													<th data-hide="phone,tablet" style="width:5%">Model</th>
+													<th style="width:8%">Numéro de série</th>
+													<th data-hide="phone" style="width:5%">Service</th>
+													<th data-hide="phone,tablet" style="width:5%">O.Mouvement</th>
+													<th data-hide="phone,tablet" style="width:7%"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Date</th>
+													<th data-hide="phone,tablet" style="width:4%">C12</th>
+													<th data-hide="phone,tablet" style="width:7%"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Date</th>
+													<th data-hide="phone,tablet" style="width:4%">C7</th>
+													<th data-hide="phone,tablet" style="width:7%"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Date</th>
+													<th data-hide="phone,tablet" style="width:4%">C5</th>
+													<th data-hide="phone,tablet" style="width:7%"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Date</th>
+													<th data-hide="phone,tablet" style="width:4%">C11</th>
+													<th data-hide="phone,tablet" style="width:7%"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Date</th>
+													<th data-hide="phone,tablet"></th>
+													<th data-hide="phone,tablet"></th>
+													<th data-hide="phone,tablet"></th>
+												</tr>
+												</thead>
+
+												<tbody>
+														{% for Materiel in liste_materiel %}
+													<tr>
+														<td>{{Materiel.Type_Materiel_FK}}</td>
+														<td>{{Materiel.Marque_FK}}</td>
+														<td>{{Materiel.Model_Materiel_FK}}</td>
+														<td>{{Materiel.Num_Serie}}</td>
+														<td>{{Materiel.Service_FK}}</td>
+														<td>{{Materiel.Num_OrdM}}</td>
+														<td>{{Materiel.Date_OrdM}}</td>
+														<td>{{Materiel.Num_C12}}</td>
+														<td>{{Materiel.Date_C12}}</td>
+														<td>{{Materiel.Num_C7}}</td>
+														<td>{{Materiel.Date_C7}}</td>
+														<td>{{Materiel.Num_C5}}</td>
+														<td>{{Materiel.Date_C5}}</td>
+														<td>{{Materiel.Num_C11}}</td>
+														<td>{{Materiel.Date_C11}}</td>
+														<td style="text-align:center;"><a href="{{ HTTP_HOST }}/equipement/print/{{Materiel.id}}" ><span class="glyphicon fa-lg glyphicon-print" style="cursor:pointer"></span></a></td>
+														<td style="text-align:center;"><a href="{{ HTTP_HOST }}/admin/Equipement/materiel/{{Materiel.id}}/change/" ><span class="fa fa-lg fa-wrench" style="cursor:pointer"></span></a></td>
+														<td style="text-align:center;"><a href="{{ HTTP_HOST }}/equipement/distribution/{{Materiel.id}}" ><span class="fa fa-lg fa-arrow-right" style="cursor:pointer"></span></a></td>
+													</tr>
+													{% endfor %}
+												</tbody>
+
+										</table>
+									</div>
+									<!-- end widget content -->
+
+								</div>
+								<!-- end widget div -->
+
+							</div>
+
+					</article>
+					<!-- WIDGET END -->
+
+
+<!-- end row -->
+
+
+
+</section>
+<!-- end widget grid -->
+
+
+{% endblock content %}
