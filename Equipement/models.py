@@ -93,16 +93,6 @@ class Materiel(models.Model):
 	Service_FK=models.ForeignKey(Service,on_delete=models.CASCADE)
 	Kit_FK=models.ForeignKey(Kit,blank=True, null=True,on_delete=models.CASCADE)
 	Address_Mac=models.CharField(max_length=30,blank=True, null=True)
-	Num_OrdM=models.CharField(max_length=30,blank=True, null=True)
-	Date_OrdM=models.DateField(null=True, blank=True)
-	Num_C12=models.CharField(max_length=30,blank=True, null=True)
-	Date_C12=models.DateField(null=True, blank=True)
-	Num_C7=models.CharField(max_length=30,blank=True, null=True)
-	Date_C7=models.DateField(null=True, blank=True)
-	Num_C5=models.CharField(max_length=30,blank=True, null=True)
-	Date_C5=models.DateField(null=True, blank=True)
-	Num_C11=models.CharField(max_length=30,blank=True, null=True)
-	Date_C11=models.DateField(null=True, blank=True)
 
 	def __str__(self):
 		return self.Num_Serie
