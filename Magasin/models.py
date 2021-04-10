@@ -34,9 +34,6 @@ class Article(models.Model):
 	Description=models.CharField(max_length=250,default='/')
 	Service_FK=models.ForeignKey(Service,on_delete=models.CASCADE,default='60')
 	Num_OrdM=models.CharField(max_length=30,blank=True, null=True)
-	Date_OrdM=models.DateField(null=True, blank=True)
-	Num_C12=models.CharField(max_length=30,blank=True, null=True)
-	Date_C12=models.DateField(null=True, blank=True)
 	Quantite=models.PositiveIntegerField(default=1)
 
 	def Type(self):
