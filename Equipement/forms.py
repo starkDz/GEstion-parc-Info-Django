@@ -13,7 +13,5 @@ def get_choices():
     return CHOICE
 
 class NameForm(forms.Form):
-    num_c12=forms.CharField(label="numero C12",max_length=100)
-    date_C12=forms.DateField(label="date C12")
     quantite=forms.IntegerField(label="quantite")
     service=forms.CharField(widget=forms.Select(choices=get_choices()))
